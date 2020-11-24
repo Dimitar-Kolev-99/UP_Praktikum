@@ -24,12 +24,26 @@ int findElement(int arr[], int n, int index, int element) {
 	}
 }
 
+//Task3
+int findElementsLargerThanN(int arr[], int n, int index, int element) {
+	if (index == n) {
+		return 0;
+	}
+	else if (arr[index] > element) {
+		return 1 + findElementsLargerThanN(arr, n, index + 1, element);
+	}
+	else {
+		return findElementsLargerThanN(arr, n, index + 1, element);
+	}
+}
+
 int main() {
 	const int n = 10;
 	int arr[n] = { 1,2,3,4,5,6,7,8,9,10 };
 
-	cout << findElement(arr, n, 0, 5) << endl;
-	cout << findElement(arr, n, 0, -1) << endl;
+	cout << findElementsLargerThanN(arr, n, 0, 5) << endl;
+	cout << findElementsLargerThanN(arr, n, 0, 15) << endl;
+
 	system("pause");
 	return 0;
 }
